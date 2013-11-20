@@ -2,6 +2,7 @@
 
 # Copyright 2010-2011 OpenStack Foundation
 # Copyright (c) 2013 Hewlett-Packard Development Company, L.P.
+# Copyright 2013 Nebula Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License"); you may
 # not use this file except in compliance with the License. You may obtain
@@ -19,6 +20,8 @@ import os
 
 import fixtures
 import testtools
+
+from oscplugin.tests import fakes
 
 _TRUE_VALUES = ('true', '1', 'yes')
 
@@ -51,3 +54,23 @@ class TestCase(testtools.TestCase):
             self.useFixture(fixtures.MonkeyPatch('sys.stderr', stderr))
 
         self.log_fixture = self.useFixture(fixtures.FakeLogger())
+
+
+class TestCommand(TestCase):
+    """Test cliff command classes"""
+
+    def setUp(self):
+        super(TestCommand, self).setUp()
+        # Build up a fake app
+        self.app = fakes.FakeApp()
+        self.app.client_manager = fakes.FakeClientManager()
+
+    def check_parser(self, cmd, args, verify_args):
+        cmd_parser = cmd.get_parser('check_parser')
+        parsed_args = cmd_parser.parse_args(args)
+        for av in verify_args:
+            attr, value = av
+            if attr:
+                self.assertIn(attr, parsed_args)
+                self.assertEqual(getattr(parsed_args, attr), value)
+        return parsed_args
