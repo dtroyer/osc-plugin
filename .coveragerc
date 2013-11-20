@@ -1,0 +1,7 @@
+[run]
+branch = True
+source = oscplugin
+omit = oscplugin/tests/*,oscplugin/openstack/*
+
+[report]
+ignore-errors = True
