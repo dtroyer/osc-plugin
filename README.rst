@@ -24,7 +24,7 @@ OSC discovers extensions by enumerating the entry points found under
 
     [entry_points]
     openstack.cli.extension =
-        oscplugin = oscplugin.client
+        oscplugin = oscplugin.plugin
 
 The client module must implement the following interface functions:
 

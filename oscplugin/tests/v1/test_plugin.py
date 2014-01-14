@@ -19,10 +19,10 @@ from oscplugin.tests import base
 from oscplugin.tests import fakes
 from oscplugin.v1 import plugin
 
-# This import loads the client module for the plugin list and show commands
-import oscplugin.client
+# Load the plugin init module for the plugin list and show commands
+import oscplugin.plugin
 plugin_name = 'oscplugin'
-plugin_client = 'oscplugin.client'
+plugin_client = 'oscplugin.plugin'
 
 
 class FakePluginV1Client(object):
@@ -71,7 +71,7 @@ class TestPluginList(TestPluginV1):
         self.assertEqual(columns, collist)
         datalist = ((
             plugin_name,
-            oscplugin.client.API_VERSIONS.keys(),
+            oscplugin.plugin.API_VERSIONS.keys(),
             plugin_client,
         ), )
         self.assertEqual(tuple(data), datalist)
@@ -104,7 +104,7 @@ class TestPluginShow(TestPluginV1):
         collist = ('1', 'module', 'name')
         self.assertEqual(columns, collist)
         datalist = (
-            oscplugin.client.API_VERSIONS['1'],
+            oscplugin.plugin.API_VERSIONS['1'],
             plugin_client,
             plugin_name,
         )

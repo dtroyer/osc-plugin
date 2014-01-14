@@ -13,7 +13,7 @@
 #   under the License.
 #
 
-"""Plugin Client interface"""
+"""OpenStackClient Plugin interface"""
 
 import logging
 
