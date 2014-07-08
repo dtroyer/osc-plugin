@@ -45,8 +45,8 @@ def make_client(instance):
         API_NAME,
         instance._api_version[API_NAME],
         API_VERSIONS)
+    LOG.debug('Instantiating plugin client: %s' % plugin_client)
 
-    LOG.debug('instantiating plugin client')
     client = plugin_client()
     return client
 
