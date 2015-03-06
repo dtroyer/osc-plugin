@@ -1,7 +1,7 @@
-========
+=====
 Usage
-========
+=====
 
-To use python-oscplugin in a project::
+To use osc-plugin in a project::
 
 	import oscplugin

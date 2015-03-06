@@ -22,6 +22,8 @@ import sys
 from cliff import lister
 from cliff import show
 
+from openstackclient.common import clientmanager
+
 from oscplugin import exceptions
 
 
@@ -38,10 +40,13 @@ class ListPlugin(lister.Lister):
         self.log.debug("take_action(%s)" % parsed_args)
 
         data = []
-        for mod in self.app.ext_modules:
+        for mod in clientmanager.PLUGIN_MODULES:
+            versions = []
+            if getattr(mod, 'API_VERSIONS', None):
+                versions = mod.API_VERSIONS.keys()
             data.append((
                 mod.API_NAME,
-                mod.API_VERSIONS.keys(),
+                versions,
                 mod.__name__,
             ))
 
@@ -70,13 +75,16 @@ class ShowPlugin(show.ShowOne):
     def take_action(self, parsed_args):
         self.log.debug('take_action(%s)' % parsed_args)
 
-        for mod in self.app.ext_modules:
+        for mod in clientmanager.PLUGIN_MODULES:
             if mod.API_NAME == parsed_args.name:
                 data = {
                     'name': mod.API_NAME,
                     'module': mod.__name__,
                 }
-                for ver in mod.API_VERSIONS.keys():
+                versions = []
+                if getattr(mod, 'API_VERSIONS', None):
+                    versions = mod.API_VERSIONS.keys()
+                for ver in versions:
                     data.update({
                         '%s' % ver: mod.API_VERSIONS[ver],
                     })

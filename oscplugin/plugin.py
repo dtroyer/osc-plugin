@@ -28,7 +28,7 @@ DEFAULT_OSCPLUGIN_API_VERSION = '1'
 API_NAME = 'oscplugin'
 API_VERSION_OPTION = 'os_oscplugin_api_version'
 API_VERSIONS = {
-    '1': 'oscquintette.plugin.EmptyClient',
+    '1': 'oscplugin.plugin.EmptyClient',
 }
 
 
