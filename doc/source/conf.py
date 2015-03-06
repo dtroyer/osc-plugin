@@ -37,8 +37,8 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'python-oscplugin'
-copyright = u'2013, OpenStack Foundation'
+project = u'osc-plugin'
+copyright = u'2013 Nebula Inc.'
 
 # If true, '()' will be appended to :func: etc. cross-reference text.
 add_function_parentheses = True

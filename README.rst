@@ -1,6 +1,6 @@
-================
-python-oscplugin
-================
+==========
+osc-plugin
+==========
 
 OpenStackClient reference plugin module
 
@@ -58,7 +58,7 @@ requirements.  This limits the ability to add additional auth modules to OSC.
 Client
 ======
 
-The current implementation of the ``oscplugin`` Client class is a
-simple subclass of ``keystone.HTTPClient``.  This allows tracking of
-the changes being made in ``keystoneclient`` to refactor the Session and
-authentication classes.
+The current implementation of the ``oscplugin`` Client class is an empty
+placeholder.  This client object is not equired but OSC's ClientManager will
+maintain it as required and is the interface point for other plugins to
+access anything implemented by this plugin.
