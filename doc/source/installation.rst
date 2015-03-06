@@ -4,9 +4,9 @@ Installation
 
 At the command line::
 
-    $ pip install python-oscplugin
+    $ pip install osc-plugin
 
 Or, if you have virtualenvwrapper installed::
 
-    $ mkvirtualenv python-oscplugin
-    $ pip install python-oscplugin
+    $ mkvirtualenv osc-plugin
+    $ pip install osc-plugin

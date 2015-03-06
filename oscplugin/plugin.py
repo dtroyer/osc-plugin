@@ -28,7 +28,7 @@ DEFAULT_OSCPLUGIN_API_VERSION = '1'
 API_NAME = 'oscplugin'
 API_VERSION_OPTION = 'os_oscplugin_api_version'
 API_VERSIONS = {
-    '1': 'oscplugin.v1.client.Client',
+    '1': 'oscquintette.plugin.EmptyClient',
 }
 
 
@@ -72,3 +72,9 @@ def build_option_parser(parser):
              DEFAULT_OSCPLUGIN_API_VERSION +
              ' (Env: OS_OSCPLUGIN_API_VERSION)')
     return parser
+
+
+class EmptyClient(object):
+    """The ultimate placeholder"""
+
+    pass

@@ -69,12 +69,14 @@ class TestPluginList(TestPluginV1):
 
         collist = ('Name', 'Versions', 'Module')
         self.assertEqual(columns, collist)
-        datalist = ((
+        datalist = (
             plugin_name,
             oscplugin.plugin.API_VERSIONS.keys(),
             plugin_client,
-        ), )
-        self.assertEqual(tuple(data), datalist)
+        )
+        for d in data:
+            if d[0] == plugin_name:
+                self.assertEqual(datalist, d)
 
 
 class TestPluginShow(TestPluginV1):
